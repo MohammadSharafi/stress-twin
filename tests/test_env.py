@@ -29,3 +29,14 @@ def test_no_key_leaks_between_tests():
     import os
 
     assert os.environ.get("NEBIUS_API_KEY") in (None, "test-key")
+
+
+def test_cli_without_key_prints_clean_error(tmp_path, monkeypatch, capsys):
+    from stress_twin.cli import main
+
+    monkeypatch.setenv("NEBIUS_API_KEY", "x")
+    monkeypatch.delenv("NEBIUS_API_KEY")
+    monkeypatch.chdir(tmp_path)
+    code = main(["run", "--strategy", "llm", "--budget", "2", "--rounds", "1", "--out", str(tmp_path / "r")])
+    err = capsys.readouterr().err
+    assert code == 2 and "NEBIUS_API_KEY is not set" in err and "Traceback" not in err

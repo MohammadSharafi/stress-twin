@@ -205,7 +205,14 @@ def main(argv=None) -> int:
     p.set_defaults(fn=cmd_validate)
 
     args = ap.parse_args(argv)
-    return args.fn(args)
+    from .llm import LLMUnavailable
+
+    try:
+        return args.fn(args)
+    except LLMUnavailable as err:
+        print(f"stress-twin: {err}", file=sys.stderr)
+        print("To add a key: copy .env.example to .env and paste the key after NEBIUS_API_KEY=", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
