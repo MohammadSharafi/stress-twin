@@ -63,8 +63,11 @@ def _contacts(model, data, gid_obj, gids) -> dict[str, bool]:
 
 
 def run_episode(scenario: dict, record: bool = False, perception: Perception | None = None,
-                frame_size: tuple[int, int] = (240, 320)) -> EpisodeResult:
-    """frame_size is (height, width) of recorded side-view frames."""
+                frame_size: tuple[int, int] = (240, 320), frame_every: float = FRAME_EVERY,
+                camera=None, on_frame=None) -> EpisodeResult:
+    """frame_size is (height, width) of recorded frames. `camera` is a camera name or a function
+    t -> mujoco.MjvCamera for moving shots. `on_frame(frame)` receives each frame instead of
+    storing it (keeps memory flat for long HD recordings). None of these affect the outcome."""
     perception = perception or Perception.shared()
     model = mujoco.MjModel.from_xml_string(scene.build_xml(scenario))
     data = mujoco.MjData(model)
@@ -147,9 +150,14 @@ def run_episode(scenario: dict, record: bool = False, perception: Perception | N
                 trace["grip"].append(round(float(data.qpos[model.joint("fl").qposadr[0]]), 4))
                 trace["contact"].append(int(hit["l"]) + int(hit["r"]))
             if record and t >= next_frame:
-                side.update_scene(data, camera="side")
-                frames.append(side.render().copy())
-                next_frame += FRAME_EVERY
+                cam = camera(t) if callable(camera) else (camera or "side")
+                side.update_scene(data, camera=cam)
+                img_t = side.render().copy()
+                if on_frame is not None:
+                    on_frame(img_t)
+                else:
+                    frames.append(img_t)
+                next_frame += frame_every
 
     if side is not None:
         side.close()

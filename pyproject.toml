@@ -20,6 +20,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "fastapi>=0.110", "uvicorn>=0.29"]
+video = ["soundfile>=0.12", "scipy>=1.11"]
 
 [project.scripts]
 stress-twin = "stress_twin.cli:main"

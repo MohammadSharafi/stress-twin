@@ -121,3 +121,28 @@ ABANDON: G14 no Nebius account or registry credentials here. Partial evidence: w
   CHECK: grep -c "gallery-gif/" ../submission/SUBMISSION-KIT.md
   EXPECT: 7
   EVIDENCE: 7
+
+## Round 4: professional demo video (2026-10-08)
+
+- [x] G25: Pro video exists: 1920x1080, 30 fps, between 100 and 175 seconds, AAC audio
+  CHECK: f=../submission/stress-twin-demo-pro.mp4; ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of csv=p=0 $f | tr '\n' ' '; ffprobe -v error -show_entries format=duration -of csv=p=0 $f | awk '{print ($1>100 && $1<175) ? "PRO_DURATION_OK" : "PRO_DURATION_BAD"}'
+  EXPECT: PRO_DURATION_OK
+  EVIDENCE: 1920,1080,30/1 PRO_DURATION_OK
+
+- [x] G26: Audio is a real mix: neural narration plus a music bed that is quieter than the voice (loudness measured), no clipping
+  CHECK: .venv/bin/python scripts/audio_check.py ../submission/stress-twin-demo-pro-mix.wav
+  EXPECT: AUDIO_OK
+  EVIDENCE: sample rate 48000, duration 129.9s, peak -1.0 dBFS, clipped samples 0, voice -24.9 dB, music -39.9 dB, voice-over-music 15.0 dB | AUDIO_OK
+
+- [x] G27: Every spoken number matches the run files (narration script checked against campaign.json, validation.json, benchmark_240.json)
+  CHECK: .venv/bin/python scripts/make_pro_video.py --check-claims runs/demo
+  EXPECT: CLAIMS_OK
+  EVIDENCE: benchmark ratio 3.86, sweep error at light 0.10: 118 mm | CLAIMS_OK
+
+- [x] G28: Visual review: frames from every scene inspected; cinematic orbit shots, animated architecture diagram, crossfades, captions readable
+  EVIDENCE: 33 frames (3 per scene, 11 scenes) reviewed in three contact sheets, then the fixed scenes re-checked. Fixed: diagram subtitles overflowing nodes (now fit-to-box, verified on a crop), failure-grid labels hidden by captions (moved to tile tops), robot view under captions (resized), small problem-slide type (enlarged). Orbit shots avoid gantry posts (azimuth 150, inside the frame).
+
+- [x] G29: Physical AI rule: at least 60 s of application modules in action (scene log)
+  CHECK: python3 -c "import json;d=json.load(open('../submission/stress-twin-demo-pro-scenes.json'));print('MODULES_OK' if d['module_footage_seconds']>=60 else 'MODULES_SHORT', d['module_footage_seconds'])"
+  EXPECT: MODULES_OK
+  EVIDENCE: MODULES_OK 88.0

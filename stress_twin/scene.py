@@ -96,7 +96,7 @@ def build_xml(scenario: dict) -> str:
   <visual>
     <headlight ambient="{0.10 * light:.3f} {0.10 * light:.3f} {0.10 * light:.3f}" diffuse="{0.25 * light:.3f} {0.25 * light:.3f} {0.25 * light:.3f}" specular="0 0 0"/>
     <quality shadowsize="2048"/>
-    <global offwidth="1280" offheight="720"/>
+    <global offwidth="1920" offheight="1080"/>
   </visual>
   <asset>
     <texture name="sky" type="skybox" builtin="gradient" rgb1="0.32 0.38 0.50" rgb2="0.06 0.08 0.14" width="256" height="256"/>

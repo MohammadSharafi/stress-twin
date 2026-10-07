@@ -142,6 +142,11 @@ failure scenarios to extend the training data with.
 run: every clip is a deterministic replay and every number is read from the run's files. It uses
 macOS `say` for narration and ffmpeg for encoding.
 
+Professional cut: `python scripts/make_pro_video.py runs/demo out.mp4` (about 2:10) adds cinematic free-camera
+replays, an animated architecture diagram, synthesized music and sound design, and Kokoro neural narration
+(run through `scripts/tts_kokoro.py` in an environment with `kokoro-onnx`; set `KOKORO_PYTHON` and `KOKORO_DIR`).
+`--check-claims` verifies every spoken number against the run's files.
+
 ## Tests
 
 ```bash
