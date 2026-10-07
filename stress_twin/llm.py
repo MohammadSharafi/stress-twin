@@ -33,6 +33,24 @@ class LLMUnavailable(RuntimeError):
     pass
 
 
+def load_dotenv(paths: list[Path] | None = None) -> None:
+    """Read KEY=VALUE lines from a .env file into the environment without overriding values
+    that are already set. Looks in the current directory, then the repository root."""
+    paths = paths or [Path.cwd() / ".env", Path(__file__).resolve().parent.parent / ".env"]
+    for path in paths:
+        if not path.is_file():
+            continue
+        for raw in path.read_text().splitlines():
+            line = raw.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            key = key.strip().removeprefix("export ").strip()
+            value = value.strip().strip("'\"")
+            if key and value and key not in os.environ:
+                os.environ[key] = value
+
+
 def _norm(s: str) -> str:
     return s.lower().replace("_", "-").replace(" ", "-")
 
@@ -85,9 +103,10 @@ class TokenFactory:
 
     @classmethod
     def from_env(cls, log_path: Path | None = None) -> "TokenFactory":
+        load_dotenv()
         key = os.environ.get("NEBIUS_API_KEY")
         if not key:
-            raise LLMUnavailable("NEBIUS_API_KEY is not set; Token Factory features need a key "
+            raise LLMUnavailable("NEBIUS_API_KEY is not set (environment or .env file); Token Factory features need a key "
                                  "(https://tokenfactory.nebius.com). Use --strategy boundary --analyst offline to run offline.")
         return cls(key, os.environ.get("NEBIUS_BASE_URL", DEFAULT_BASE_URL), log_path=log_path)
 

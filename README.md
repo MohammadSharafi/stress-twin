@@ -90,8 +90,11 @@ under random stress), `stress-twin benchmark --budget 240 --seeds 3`, `stress-tw
 
 ## Live mode (Nebius Token Factory)
 
+Get a key at https://tokenfactory.nebius.com, then either copy `.env.example` to `.env` and paste
+the key after `NEBIUS_API_KEY=` (the file is ignored by git), or export it in your shell:
+
 ```bash
-export NEBIUS_API_KEY=...            # from https://tokenfactory.nebius.com
+export NEBIUS_API_KEY=...
 stress-twin run --strategy llm --analyst llm --budget 120 --rounds 4 --out runs/live
 ```
 
@@ -139,7 +142,7 @@ failure scenarios to extend the training data with.
 pytest -q
 ```
 
-22 tests cover parameters, deterministic replay, diagnosis, the Token Factory client against a
+25 tests cover parameters, `.env` key loading, deterministic replay, diagnosis, the Token Factory client against a
 mock server, a full LLM campaign with grounded captions, the Serverless Jobs runner with a fake
 `nebius` CLI, and the envelope analysis.
 

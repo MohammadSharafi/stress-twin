@@ -76,3 +76,33 @@ ABANDON: G14 no Nebius account or registry credentials here. Partial evidence: w
   CHECK: git -C . log --oneline | head -1
   EXPECT: Stress Twin
   EVIDENCE: cda12a4 Stress Twin: adversarial simulation testing for robot policies
+
+## Round 2: finish without a Token Factory key (2026-10-07)
+
+- [ ] G16: Key can be set by pasting into a .env file (gitignored), and the client reads it
+  CHECK: .venv/bin/pytest -q tests/test_env.py 2>&1 | tail -1; git check-ignore -q .env && echo env-ignored
+  EXPECT: env-ignored
+  EVIDENCE: pending
+
+- [ ] G17: GitHub Pages serves the sample report publicly
+  CHECK: curl -sL https://mohammadsharafi.github.io/stress-twin/sample-report.html | grep -o -m1 "Stress Twin Report"
+  EXPECT: Stress Twin Report
+  EVIDENCE: pending
+
+- [ ] G18: Demo video exists, is under 3 minutes, has narration audio, 1080p
+  CHECK: ffprobe -v error -show_entries format=duration:stream=codec_type,width -of csv=p=0 ../submission/stress-twin-demo.mp4 | tr '\n' ' ' | awk '{print} END{}' ; ffprobe -v error -show_entries format=duration -of csv=p=0 ../submission/stress-twin-demo.mp4 | awk '{print ($1<180 && $1>90) ? "DURATION_OK" : "DURATION_BAD"}'
+  EXPECT: DURATION_OK
+  EVIDENCE: pending
+
+- [ ] G19: Video contains at least 60 s of the application modules in action (Physical AI track rule), checked by scene log
+  EVIDENCE: pending
+
+- [ ] G20: Devpost draft is honest for a submission without a live Token Factory run, with every remaining field written
+  CHECK: grep -c "\[" ../submission/devpost-project-details.md; grep -q "live" ../submission/devpost-project-details.md && echo has-live-note
+  EXPECT: has-live-note
+  EVIDENCE: pending
+
+- [ ] G21: All changes committed and pushed
+  CHECK: git fetch -q origin; d=$(git status --porcelain | wc -l | tr -d ' '); a=$(git rev-list --count HEAD...origin/main); [ "$d$a" = "00" ] && echo SYNCED || echo "dirty=$d ahead_behind=$a"
+  EXPECT: SYNCED
+  EVIDENCE: pending
