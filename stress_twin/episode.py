@@ -62,7 +62,9 @@ def _contacts(model, data, gid_obj, gids) -> dict[str, bool]:
     return hit
 
 
-def run_episode(scenario: dict, record: bool = False, perception: Perception | None = None) -> EpisodeResult:
+def run_episode(scenario: dict, record: bool = False, perception: Perception | None = None,
+                frame_size: tuple[int, int] = (240, 320)) -> EpisodeResult:
+    """frame_size is (height, width) of recorded side-view frames."""
     perception = perception or Perception.shared()
     model = mujoco.MjModel.from_xml_string(scene.build_xml(scenario))
     data = mujoco.MjData(model)
@@ -83,7 +85,7 @@ def run_episode(scenario: dict, record: bool = False, perception: Perception | N
     est = perception.predict(img)
     true0 = data.xpos[obj_body][:2].copy()
 
-    side = mujoco.Renderer(model, 240, 320) if record else None
+    side = mujoco.Renderer(model, *frame_size) if record else None
     frames: list[np.ndarray] = []
     next_frame = 0.0
 

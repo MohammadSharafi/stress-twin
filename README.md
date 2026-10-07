@@ -136,6 +136,12 @@ failure scenarios to extend the training data with.
 - The envelope is axis-aligned. Interactions inside it show up as residual risk, which the
   report lists from the validation run.
 
+## Demo video
+
+`python scripts/make_video.py runs/demo out.mp4` rebuilds the narrated demo (about 1:45, 1080p) from a
+run: every clip is a deterministic replay and every number is read from the run's files. It uses
+macOS `say` for narration and ffmpeg for encoding.
+
 ## Tests
 
 ```bash

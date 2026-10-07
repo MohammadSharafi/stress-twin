@@ -94,8 +94,8 @@ ABANDON: G14 no Nebius account or registry credentials here. Partial evidence: w
   EXPECT: DURATION_OK
   EVIDENCE: pending
 
-- [ ] G19: Video contains at least 60 s of the application modules in action (Physical AI track rule), checked by scene log
-  EVIDENCE: pending
+- [x] G19: Video contains at least 60 s of the application modules in action (Physical AI track rule), checked by scene log
+  EVIDENCE: ../submission/stress-twin-demo-scenes.json: module_footage_seconds=74.5 of total 103.7s (scenes nominal,dim,search,montage,map,safety); frames inspected in two contact sheets, subtitles synced to clips after fix
 
 - [ ] G20: Devpost draft is honest for a submission without a live Token Factory run, with every remaining field written
   CHECK: grep -c "\[" ../submission/devpost-project-details.md; grep -q "live" ../submission/devpost-project-details.md && echo has-live-note
