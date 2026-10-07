@@ -1,0 +1,101 @@
+{
+  "budget": 240,
+  "seeds": 3,
+  "per_seed": {
+    "random": [
+      {
+        "episodes": 240,
+        "failures": 96,
+        "subtle_failures": 6,
+        "modes": 16,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.93355
+      },
+      {
+        "episodes": 240,
+        "failures": 93,
+        "subtle_failures": 5,
+        "modes": 15,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.8869
+      },
+      {
+        "episodes": 240,
+        "failures": 94,
+        "subtle_failures": 10,
+        "modes": 16,
+        "causes": [
+          "collision",
+          "disturbance",
+          "grasp_miss",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.8258
+      }
+    ],
+    "boundary": [
+      {
+        "episodes": 240,
+        "failures": 76,
+        "subtle_failures": 31,
+        "modes": 15,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.37215
+      },
+      {
+        "episodes": 240,
+        "failures": 76,
+        "subtle_failures": 22,
+        "modes": 17,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.45635000000000003
+      },
+      {
+        "episodes": 240,
+        "failures": 78,
+        "subtle_failures": 28,
+        "modes": 15,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.3608
+      }
+    ]
+  },
+  "mean": {
+    "random": {
+      "failures": 94.33333333333333,
+      "subtle_failures": 7.0,
+      "modes": 15.666666666666666
+    },
+    "boundary": {
+      "failures": 76.66666666666667,
+      "subtle_failures": 27.0,
+      "modes": 15.666666666666666
+    }
+  }
+}

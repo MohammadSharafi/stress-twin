@@ -1,0 +1,115 @@
+{
+  "universe": {
+    "perception_miss|camera_offset": 57,
+    "perception_miss|image_noise": 161,
+    "slip|obj_mass": 216,
+    "perception_miss|hue_shift": 144,
+    "disturbance|disturbance": 238,
+    "perception_miss|distractors": 75,
+    "perception_miss|obj_yaw": 19,
+    "perception_miss|obj_size": 4,
+    "slip|obj_yaw": 32,
+    "perception_miss|light": 93,
+    "slip|obj_friction": 42,
+    "slip|disturbance": 5,
+    "perception_miss|distractor_hue_gap": 8,
+    "grasp_miss|hue_shift": 1,
+    "perception_miss|obj_value": 16,
+    "collision|image_noise": 3,
+    "grasp_miss|obj_mass": 2,
+    "slip|camera_offset": 5,
+    "collision|obj_size": 8,
+    "slip|hue_shift": 4,
+    "collision|light": 1,
+    "grasp_miss|obj_size": 2,
+    "slip|distractors": 2,
+    "slip|image_noise": 4,
+    "slip|obj_size": 3,
+    "grasp_miss|camera_offset": 1
+  },
+  "found": {
+    "slip|obj_mass": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|light": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|distractor_hue_gap": {
+      "random": 2,
+      "boundary": 3
+    },
+    "collision|obj_size": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|camera_offset": {
+      "random": 3,
+      "boundary": 3
+    },
+    "slip|obj_size": {
+      "random": 2,
+      "boundary": 2
+    },
+    "slip|image_noise": {
+      "random": 2
+    },
+    "perception_miss|image_noise": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|distractors": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|obj_size": {
+      "random": 1,
+      "boundary": 3
+    },
+    "disturbance|disturbance": {
+      "random": 3,
+      "boundary": 3
+    },
+    "slip|camera_offset": {
+      "random": 3,
+      "boundary": 2
+    },
+    "slip|obj_yaw": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|obj_yaw": {
+      "random": 3,
+      "boundary": 3
+    },
+    "slip|obj_friction": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|hue_shift": {
+      "random": 3,
+      "boundary": 3
+    },
+    "perception_miss|obj_value": {
+      "boundary": 3,
+      "random": 2
+    },
+    "slip|disturbance": {
+      "random": 1
+    },
+    "slip|light": {
+      "boundary": 1
+    },
+    "grasp_miss|camera_offset": {
+      "random": 1
+    },
+    "slip|hue_shift": {},
+    "collision|image_noise": {},
+    "grasp_miss|obj_mass": {},
+    "grasp_miss|obj_size": {},
+    "slip|distractors": {},
+    "grasp_miss|hue_shift": {},
+    "collision|light": {}
+  }
+}

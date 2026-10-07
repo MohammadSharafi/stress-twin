@@ -1,0 +1,101 @@
+{
+  "budget": 480,
+  "seeds": 3,
+  "per_seed": {
+    "random": [
+      {
+        "episodes": 480,
+        "failures": 187,
+        "subtle_failures": 8,
+        "modes": 17,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.9022
+      },
+      {
+        "episodes": 480,
+        "failures": 204,
+        "subtle_failures": 8,
+        "modes": 19,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.88105
+      },
+      {
+        "episodes": 480,
+        "failures": 192,
+        "subtle_failures": 16,
+        "modes": 19,
+        "causes": [
+          "collision",
+          "disturbance",
+          "grasp_miss",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.8363499999999999
+      }
+    ],
+    "boundary": [
+      {
+        "episodes": 480,
+        "failures": 157,
+        "subtle_failures": 55,
+        "modes": 17,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.4275
+      },
+      {
+        "episodes": 480,
+        "failures": 174,
+        "subtle_failures": 51,
+        "modes": 20,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.4447
+      },
+      {
+        "episodes": 480,
+        "failures": 180,
+        "subtle_failures": 60,
+        "modes": 19,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.44125000000000003
+      }
+    ]
+  },
+  "mean": {
+    "random": {
+      "failures": 194.33333333333334,
+      "subtle_failures": 10.666666666666666,
+      "modes": 18.333333333333332
+    },
+    "boundary": {
+      "failures": 170.33333333333334,
+      "subtle_failures": 55.333333333333336,
+      "modes": 18.666666666666668
+    }
+  }
+}

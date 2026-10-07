@@ -1,0 +1,72 @@
+{
+  "n_inside": 150,
+  "pass_inside": 143,
+  "pass_rate_inside": 0.9533,
+  "ci95_inside": [
+    0.9068,
+    0.9772
+  ],
+  "n_outside": 50,
+  "pass_rate_outside": 0.34,
+  "failures_inside": [
+    {
+      "cause": "slip",
+      "stressors": [
+        "object mass 0.67 kg",
+        "camera offset 6 mm"
+      ]
+    },
+    {
+      "cause": "perception_miss",
+      "stressors": [
+        "object size 12.3 mm"
+      ]
+    },
+    {
+      "cause": "perception_miss",
+      "stressors": [
+        "distractor count 2",
+        "distractor hue gap 0.15",
+        "object brightness 0.57"
+      ]
+    },
+    {
+      "cause": "slip",
+      "stressors": [
+        "object mass 0.64 kg"
+      ]
+    },
+    {
+      "cause": "slip",
+      "stressors": [
+        "distractor count 2",
+        "object mass 0.67 kg"
+      ]
+    },
+    {
+      "cause": "perception_miss",
+      "stressors": [
+        "distractor count 3"
+      ]
+    },
+    {
+      "cause": "collision",
+      "stressors": [
+        "object size 39.5 mm",
+        "object mass 0.64 kg"
+      ]
+    }
+  ],
+  "limits": [
+    "object rotation \u2264 21\u00b0",
+    "object mass \u2264 0.71 kg",
+    "object friction \u2265 0.57",
+    "object hue shift \u2264 0.25",
+    "scene light \u2265 0.52",
+    "camera offset \u2264 8 mm",
+    "sensor noise \u2264 0.08",
+    "bump during approach \u2264 11 mm"
+  ],
+  "seed": 0,
+  "overlap_with_campaign": 0
+}

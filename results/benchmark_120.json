@@ -1,0 +1,100 @@
+{
+  "budget": 120,
+  "seeds": 3,
+  "per_seed": {
+    "random": [
+      {
+        "episodes": 120,
+        "failures": 49,
+        "subtle_failures": 4,
+        "modes": 14,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.8832
+      },
+      {
+        "episodes": 120,
+        "failures": 49,
+        "subtle_failures": 2,
+        "modes": 13,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.8386
+      },
+      {
+        "episodes": 120,
+        "failures": 48,
+        "subtle_failures": 7,
+        "modes": 13,
+        "causes": [
+          "collision",
+          "disturbance",
+          "grasp_miss",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.8244
+      }
+    ],
+    "boundary": [
+      {
+        "episodes": 120,
+        "failures": 24,
+        "subtle_failures": 6,
+        "modes": 8,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.7201500000000001
+      },
+      {
+        "episodes": 120,
+        "failures": 36,
+        "subtle_failures": 9,
+        "modes": 13,
+        "causes": [
+          "collision",
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.52935
+      },
+      {
+        "episodes": 120,
+        "failures": 31,
+        "subtle_failures": 9,
+        "modes": 14,
+        "causes": [
+          "disturbance",
+          "perception_miss",
+          "slip"
+        ],
+        "median_failure_stress": 0.3641
+      }
+    ]
+  },
+  "mean": {
+    "random": {
+      "failures": 48.666666666666664,
+      "subtle_failures": 4.333333333333333,
+      "modes": 13.333333333333334
+    },
+    "boundary": {
+      "failures": 30.333333333333332,
+      "subtle_failures": 8.0,
+      "modes": 11.666666666666666
+    }
+  }
+}
