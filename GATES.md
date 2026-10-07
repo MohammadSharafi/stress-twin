@@ -106,3 +106,18 @@ ABANDON: G14 no Nebius account or registry credentials here. Partial evidence: w
   CHECK: git fetch -q origin; d=$(git status --porcelain | wc -l | tr -d ' '); a=$(git rev-list --count HEAD...origin/main); [ "$d$a" = "00" ] && echo SYNCED || echo "dirty=$d ahead_behind=$a"
   EXPECT: SYNCED
   EVIDENCE: SYNCED
+
+## Round 3: animated, eye-catching gallery (2026-10-08)
+
+- [ ] G22: Six animated GIFs exist in ../submission/gallery-gif, each 3:2, animated (more than 20 frames) and at most 5 MB (Devpost limit)
+  CHECK: .venv/bin/python -c "import glob,os;from PIL import Image;fs=sorted(glob.glob('../submission/gallery-gif/*.gif'));bad=[f for f in fs if not(abs(Image.open(f).size[0]/Image.open(f).size[1]-1.5)<0.01 and Image.open(f).n_frames>20 and os.path.getsize(f)<=5*1024*1024)];print(f'gifs={len(fs)} bad={len(bad)}');print('GIFS_OK' if len(fs)==6 and not bad else 'GIFS_BAD')"
+  EXPECT: GIFS_OK
+  EVIDENCE: pending
+
+- [x] G23: Every number shown in the GIFs comes from the run files (no invented data), and each GIF was visually inspected
+  EVIDENCE: scripts/make_gifs.py reads counts from runs/demo/campaign.json, rates/CI/n from validation.json, limits from prim_envelope(results.jsonl), dots from results.jsonl in campaign order, tolerance from diagnose.PERCEPTION_TOL; robot-view errors are live CNN predictions (118 mm at light 0.10, 1 mm at 1.00). Three inspection passes: fixed beige SUCCESS badge (palette stats_mode), missing check glyph, clipped grid labels, misleading first frames.
+
+- [ ] G24: Submission kit points thumbnail and gallery at the GIFs
+  CHECK: grep -c "gallery-gif/" ../submission/SUBMISSION-KIT.md
+  EXPECT: 7
+  EVIDENCE: pending
